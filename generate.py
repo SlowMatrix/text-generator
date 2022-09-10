@@ -8,7 +8,7 @@ def generate(seed=None, model="model.pkl", length=10, save="text.txt"): # фун
     with open(model, 'rb') as f: # импортируем
         model = pickle.load(f)
 
-    if seed != None: # если сид задан то переварачиваем его и преабразуем в кортедж (на всякий случай) а иначе берём его из модели 
+    if seed != None: # если сид задан то переварачиваем его и преабразуем в кортеж (на всякий случай) а иначе берём его из модели 
         seed = tuple(reversed(seed))
     else:
         seed = tuple(model)[1]
@@ -20,11 +20,11 @@ def generate(seed=None, model="model.pkl", length=10, save="text.txt"): # фун
             break
 
         n = []
-        for i in range(len(model[seed])): # оздаём список n в котором будут лежать варианты следующего слова согластно их количеству
+        for i in range(len(model[seed])): # создаём список n в котором будут лежать варианты следующего слова согластно их количеству
             z = model[seed][(s := list(model[seed])[i])]
             n += [s]*z
             
-        out.append(n[randint(0, len(n)-1)]) # обавляем выбранное слово в out
+        out.append(n[randint(0, len(n)-1)]) # добавляем выбранное слово в out
         
         seed = tuple([out[-1]]+list(seed[0:-1])) # 
 
