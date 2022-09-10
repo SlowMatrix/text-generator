@@ -8,7 +8,7 @@ def generate(seed=None, model="model.pkl", length=10, save="text.txt"): # фун
     with open(model, 'rb') as f: # импортируем
         model = pickle.load(f)
 
-    if seed != None: # если сид задан то переварачиваем его и преабразуем в кортедж (навсякий случай) а иначе берём его из модели 
+    if seed != None: # если сид задан то переварачиваем его и преабразуем в кортедж (на всякий случай) а иначе берём его из модели 
         seed = tuple(reversed(seed))
     else:
         seed = tuple(model)[1]
